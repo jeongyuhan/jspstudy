@@ -1,6 +1,8 @@
 package ex06;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Redirect2
+ * Servlet implementation class Forward1
  */
-@WebServlet("/Redirect2") // 동일한 매핑이 있으면 서버가 돌지 않는다.
-public class Redirect2 extends HttpServlet {
+@WebServlet("/Forward1")
+public class Forward1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Redirect2() {
+    public Forward1() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,10 +28,15 @@ public class Redirect2 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		// 파라미터 name이 존재하는가? Null(존재하지 않는다.)
-		String name = request.getParameter("name");
-		System.out.println(name);
+		
+		// 포워드 이동
+		
+		// 1. 서버가 직접 이동한다. (서버 내부 이동이기 때문에 주소는 '/매핑' 만 전달)
+		// 2. 클라이언트는 이동을 알 수 없다. (주소창이 바뀌지 않는다.)
+		// 3. 기존의 요청을 그대로 가지고 이동한다. (현재 request가 전달된다.) 
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Forward2"); //(RequestDispatcher : 클라이언트로 부터 받은 request를 서버내 다른곳으로 전달해주는 역할을 하는 클래스)
+		dispatcher.forward(request, response);
 	}
 
 	/**

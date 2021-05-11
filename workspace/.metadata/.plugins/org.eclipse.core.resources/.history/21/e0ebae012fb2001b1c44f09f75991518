@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Redirect2
+ * Servlet implementation class Forward2
  */
-@WebServlet("/Redirect2") // 동일한 매핑이 있으면 서버가 돌지 않는다.
-public class Redirect2 extends HttpServlet {
+@WebServlet("/Forward2")
+public class Forward2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Redirect2() {
+    public Forward2() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +26,9 @@ public class Redirect2 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		// 파라미터 name이 존재하는가? Null(존재하지 않는다.)
+		
+		// 파라미터 name이 존재하는가? Yes
+		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
 		System.out.println(name);
 	}

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Redirect2
  */
-@WebServlet("/Redirect2") // 동일한 매핑이 있으면 서버가 돌지 않는다.
+@WebServlet("/Redirect2")
 public class Redirect2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
