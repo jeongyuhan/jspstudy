@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	
+	<form action="/01_SERVLET/Ex07"> <!-- <form> 태그 안에서 method를 따로 지정하지 않으면 get방식으로 처리한다. -->
+		<input type="text" name="name" placeholder="이름"><br>
+		<input type="text" name="age" placeholder="나이"><br>
+		<button>전송</button>
+	</form>
+	
+</body>
+</html>
