@@ -29,7 +29,7 @@ public class Ex01_JSONObject {
 		// 구문 분석기를 준비한다.
 		JSONParser parser = new JSONParser();
 		
-		// String JSON데이터 -> JSONObject 단계 1
+		// String JSON데이터 -> JSONObject 단계 2
 		// 구문 분석한다(파싱)
 		// JSONObject obj = *(JSONObject)parser.parse(responseData); 예외 처리를 해야 한다.
 		JSONObject obj = null;
