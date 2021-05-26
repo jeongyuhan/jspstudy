@@ -19,9 +19,11 @@ public class MemberDAO {
 	
 	// singleton
 	private static MemberDAO dao = new MemberDAO();
+	
 	private MemberDAO() {
 		con = DBConnector.getInstance().getConnection();
 	}
+	
 	public static MemberDAO getInstance() {
 		if (dao == null) {
 			dao = new MemberDAO();
