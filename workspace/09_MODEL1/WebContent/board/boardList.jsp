@@ -33,6 +33,19 @@
 		td:nth-of-type(3) {width: 100px;}
 		td:nth-of-type(4) {width: 100px;}
 		td:nth-of-type(5) {width: 100px;}
+		
+		.paging {
+			text-align: center;
+		}
+		
+		.now_page {
+			color: blue;
+		}
+		
+		.paging a {
+			text-decoration: none;
+			color: black;
+		}
 	</style>
 </head>
 <body>
@@ -102,6 +115,7 @@
 			int endPage = beginPage + pageVO.getPagePerBlock() - 1;
 			endPage = (endPage < pageVO.getTotalPage()) ? endPage : pageVO.getTotalPage();
 			pageVO.setEndPage(endPage);
+			pageContext.setAttribute("pageVO", pageVO);
 			/* pageing 처리 끝 */ 			
 			
 
@@ -130,6 +144,35 @@
 					</tr>
 				</c:forEach>
 			</tbody>
+			<tfoot class="paging">
+				<tr>
+					<td colspan="5">
+						<%-- 1. 이전 블록으로 이동 : 1블록은 이전 블록이 없다. --%>
+						<c:if test="${pageVO.beginPage lt pageVO.pagePerBlock}">
+							이전&nbsp; <%-- 1블록 처리 --%>
+						</c:if>
+						<c:if test="${pageVO.beginPage ge pageVO.pagePerBlock}">
+							<a href="/09_MODEL1/board/boardList.jsp?page=${pageVO.beginPage - 1}">이전&nbsp;</a>
+						</c:if>
+						<%-- 2. 페이지 번호 : 현재 페이지는 링크가 없다. --%>
+						<c:forEach var="page" begin="${pageVO.beginPage}" end="${pageVO.endPage}" step="1">
+							<c:if test="${pageVO.page eq page}"> <%-- 현재 페이지 --%>
+								<span class="now_page">${page}&nbsp;</span>							
+							</c:if>							
+							<c:if test="${pageVO.page ne page}"> <%-- 다른 페이지 --%>
+								<a href="/09_MODEL1/board/boardList.jsp?page=${page}">${page}&nbsp;</a>							
+							</c:if>
+						</c:forEach>
+						<%-- 3. 다음 블록으로 이동 : 마지막 블록은 다음 블록이 없다. --%>
+						<c:if test="${pageVO.endPage ne pageVO.totalPage}">
+							<a href="/09_MODEL1/board/boardList.jsp?page=${pageVO.endPage + 1}">다음&nbsp;</a>
+						</c:if>
+						<c:if test="${pageVO.endPage eq pageVO.totalPage}"> <%-- 마지막 블록 --%>
+							다음 
+						</c:if>
+					</td>
+				</tr>
+			</tfoot>
 		</table>
 	</div>
 	
