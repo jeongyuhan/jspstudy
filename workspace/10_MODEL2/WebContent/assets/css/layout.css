@@ -5,28 +5,28 @@
 	margin: 0;
 	box-sizing: border-box;
 }
-
 a {
 	text-decoration: none;
 	color: black;
 }
-
 .container {
 	width: 1000px;
 	margin: 0 auto;
 }
 
-nav > ul {
-	list-style-type: none;
+nav {
 	display: flex;
 }
 
+nav > ul {
+	list-style-type: none;
+	display: flex;
+	border-bottom: 1px solid gray;
+}
 nav > ul > li {
 	width: 120px;
 	height: 40px;
-	border-bottom: 1px solid gray;
 }
-
 nav > ul > li > a {
 	display: block;
 	width: 100%;
@@ -34,13 +34,15 @@ nav > ul > li > a {
 	line-height: 40px;
 	text-align: center;
 }
-
 nav > ul > li > a:hover {
 	border-bottom: 2px solid red;
 	color: red;
 }
-
 .container > section {
 	padding: 20px;
 	height: 600px;
+}
+footer {
+	padding: 5px;
+	border-top: 1px solid gray;
 }

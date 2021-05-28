@@ -2,8 +2,8 @@ package common;
 
 public class ModelAndView {
 	
-	private String view;
-	private boolean isRedirect;
+	private String view; // 응답 View (jsp 파일명)
+	private boolean isRedirect; // 이동방식 (Redirect : true, Forward : false)
 	
 	public ModelAndView() {}
 
