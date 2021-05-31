@@ -33,7 +33,7 @@ public class MemberController extends HttpServlet {
 		String cmd = arr[arr.length - 1]; // cmd == "loginPage.m"
 		
 		// 요청을 전달하면 그 요청을 처리할 Model(Command)을 반환하는 CommandMapper 클래스를 호출해서 Command를 받는다.
-		MemberCommand command = CommandMapper.getInstance().getCommand(cmd);
+		MemberCommand command = MemberCommandMapper.getInstance().getCommand(cmd);
 		ModelAndView mav = null;
 		if(command != null) {
 			mav = command.execute(request, response);
