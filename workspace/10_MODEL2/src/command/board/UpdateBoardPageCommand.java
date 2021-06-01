@@ -1,4 +1,4 @@
-package insertBoardPage;
+package command.board;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,14 +6,14 @@ import javax.servlet.http.HttpServletResponse;
 import command.board.BoardCommand;
 import common.ModelAndView;
 
-public class insertBoardPageCommand implements BoardCommand {
+public class UpdateBoardPageCommand implements BoardCommand {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		
 		
-		return new ModelAndView("/10_MODEL2/board/insertBoardPage.jsp", true);
+		return new ModelAndView("/board/updateBoardPage.jsp", false); // 파라미터 전달을 위해서 forward사용
 	}
 
 }
