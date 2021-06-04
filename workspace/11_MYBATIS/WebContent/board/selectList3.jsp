@@ -24,56 +24,58 @@
 		$(document).ready(function(){
 			// '답글'을 클릭하면 아래 insert_reply 클래스가 toggle된다.
 			/*
-				<tr>	
+				<tr>
 					<td>
 						<a class="link">답글</a>
 					</td>
 				</tr>
 				<tr class="insert_reply">
 				</tr>
-			*/	
-			const links = $('.link'); 
-			// links가 배열이므로 link.click()이 불가능하다. 배열은 each문(for문)을 통해 처리한다.
-			// links배열처럼 타겟이 여러개일 경우 each(for)문을 돌려 처리한다음 parent()등으로 객체를 찾아간다.
+			*/
+			const links = $('.link');
+			// links.click(); links가 배열이므로 불가, 배열은 each문(for문)
 			// $.each(배열, function(인덱스, 요소){})
 			$.each(links, function(i, link){
-				$(link).click(function(){ // $(link) == <a class="link">답글</a>
+				$(link).click(function(){  // $(link) == <a class="link">답글</a>
 					// $(this) == $(link)
 					$(this).parent().parent().next().toggleClass('insert_reply');
+					// $(this).parents().parents().next().toggleClass('insert_reply');
 				})
 			})
-			const insert_reply = $('.insert_reply');
-			
 		})
 	</script>
 </head>
 <body>
-	
 	<a href="/11_MYBATIS/insertPage.do">새글작성</a>
 	<br><br><br>
-	<form action="/11_MYBATIS/findList.do"> 
+	
+	<form action="/11_MYBATIS/findList.do">
 		<select name="column">
 			<option value="TITLE">내용</option>
 			<option value="AUTHOR">작성자</option>
-			<option value="BOTH">내용 + 작성자</option>
+			<option value="BOTH">내용+작성자</option>
 		</select>
-		<input type="text" name="query"><button>검색</button>
+		<input type="text" name="query">
+		<button>검색</button>
+		<input type="button" value="전체" onclick="location.href='/11_MYBATIS/selectList.do'">
 	</form>
-	전체 게시글 : ${totalRecord}<br>
+	<br>
+	
+	전체 게시글: ${totalRecord}개<br>
 	<table border="1">
 		<thead>
 			<tr>
-				<th>순번</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>최종수정일</th>
-				<th>조회수</th>
+				<td>순번</td>
+				<td>제목</td>
+				<td>작성자</td>
+				<td>최종수정일</td>
+				<td>조회수</td>
 			</tr>
 		</thead>
 		<tbody>
 			<c:if test="${empty list}">
 				<tr>
-					<td colspan="5">작성된 게시물이 없습니다.</td>
+					<td colspan="5">작성된 게시글이 없습니다.</td>
 				</tr>
 			</c:if>
 			<c:if test="${not empty list}">
@@ -81,41 +83,40 @@
 					<tr>
 						<td>${seq - k.index}</td>
 						<td>
-						<c:if test="${dto.state == 0}">
-							<c:forEach begin="1" end="${dto.depth}" step="1">
-								&nbsp;&nbsp;								
-							</c:forEach>
-							<c:if test="${dto.depth > 0}">
-								[re]							
-							</c:if>
-							${dto.title}						
-								<a class="link">답글</a>						
-							<!-- 
-								-- loginDTO를 생성했을때 가능한 코드
+							<c:if test="${dto.state == 0}">
+								<c:forEach begin="1" end="${dto.depth}" step="1">
+									&nbsp;&nbsp;
+								</c:forEach>
+								<c:if test="${dto.depth > 0}">
+									[re]
+								</c:if>
+								${dto.title} 
+								<a class="link">답글</a>
+								<%--
 								<c:if test="${loginDTO.id == dto.author}">
 									<a href="">삭제</a>
 								</c:if>
-							-->
-							<a href="/11_MYBATIS/delete.do?no=${dto.no}">삭제</a>
-						</c:if>
-						</td> 						
-						<c:if test="${dto.state == -1}">
-							삭제된 게시글입니다.
-						</c:if>
+								--%>
+								<a href="/11_MYBATIS/delete.do?no=${dto.no}">삭제</a>
+							</c:if>
+							<c:if test="${dto.state == -1}">
+								삭제된 게시글입니다.
+							</c:if>
+						</td>
 						<td>${dto.author}</td>
 						<td>${dto.lastmodified}</td>
-						<td>${dto.hit}</td>						
-					</tr>	
+						<td>${dto.hit}</td>
+					</tr>
 					<tr class="insert_reply">
 						<form action="/11_MYBATIS/insertReply3.do">
-							<input type="hidden" name="no" value="${dto.groupno}">
+							<input type="hidden" name="no" value="${dto.no}">
 							<td><input type="text" name="author" placeholder="작성자"></td>
 							<td><input type="text" name="title" placeholder="제목"></td>
 							<td><input type="text" name="content" placeholder="내용"></td>
 							<td><button>작성</button></td>
-							<td><input type="button" value="취소"></td>
+							<td><input type="button" value="취소">
 						</form>
-					</tr>			
+					</tr>
 				</c:forEach>
 			</c:if>
 		</tbody>

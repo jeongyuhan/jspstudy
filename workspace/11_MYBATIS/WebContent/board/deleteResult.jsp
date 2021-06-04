@@ -5,17 +5,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<script>
-		if('${param.result}' > 0) {
-			alert('답글이 삭제되었습니다.');
-			location.href = '/11_MYBATIS/selectList.do';
+	<script type="text/javascript">
+		if ('${param.result}' > 0) {
+			alert('삭제되었습니다.');
+			location.href = '/11_MYBATIS/selectList2.do';
 		} else {
-			alert('답글 삭제에 실패했습니다.');
+			alert('삭제가 실패했습니다.');
 			history.back();
 		}
 	</script>
 </head>
 <body>
-	
+
 </body>
 </html>

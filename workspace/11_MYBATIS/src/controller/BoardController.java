@@ -13,7 +13,9 @@ import command.DeleteCommand;
 import command.FindListCommand;
 import command.InsertCommand;
 import command.InsertPageCommand;
-import command.InsertReplyCommand;
+import command.InsertReplyCommand1;
+import command.InsertReplyCommand2;
+import command.InsertReplyCommand3;
 import command.InsertReplyPageCommand;
 import command.SelectListCommand1;
 import command.SelectListCommand2;
@@ -40,7 +42,7 @@ public class BoardController extends HttpServlet {
 		
 		ModelAndView mav = null;
 		BoardCommand command = null;
-		switch(cmd) {
+		switch (cmd) {
 		case "selectList1.do":
 			command = new SelectListCommand1();
 			break;
@@ -49,7 +51,7 @@ public class BoardController extends HttpServlet {
 			break;
 		case "selectList3.do":
 			command = new SelectListCommand3();
-			break;			
+			break;
 		case "insertPage.do":
 			command = new InsertPageCommand();
 			break;
@@ -59,8 +61,11 @@ public class BoardController extends HttpServlet {
 		case "insertReplyPage.do":
 			command = new InsertReplyPageCommand();
 			break;
-		case "insertReply.do":
-			command = new InsertReplyCommand();
+		case "insertReply1.do":
+			command = new InsertReplyCommand1();
+			break;
+		case "insertReply2.do":
+			command = new InsertReplyCommand2();
 			break;
 		case "insertReply3.do":
 			command = new InsertReplyCommand3();
@@ -73,16 +78,16 @@ public class BoardController extends HttpServlet {
 			break;
 		}
 		
-		if(command != null) {
+		if (command != null) {
 			try {
-				mav = command.execute(request, response);				
+				mav = command.execute(request, response);
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
 		
-		if(mav != null) {
-			if(mav.isRedirect()) {
+		if (mav != null) {
+			if (mav.isRedirect()) {
 				response.sendRedirect(mav.getView());
 			} else {
 				request.getRequestDispatcher(mav.getView()).forward(request, response);

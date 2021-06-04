@@ -124,3 +124,14 @@
 6월 03, 2021 09:29:12.331 NEW SESSION
 6월 03, 2021 09:29:12.332 [5028:4592:0603/092912.327:ERROR:device_event_log_impl.cc(214)] [09:29:12.327] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.
 6월 03, 2021 16:48:36.639 [3808:5600:0603/164836.639:ERROR:device_event_log_impl.cc(214)] [16:48:36.639] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.
+
+6월 04, 2021 09:21:38.912 NEW SESSION
+6월 04, 2021 09:21:38.912 [1328:616:0604/092138.910:ERROR:device_event_log_impl.cc(214)] [09:21:38.910] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.
+6월 04, 2021 09:59:05.849 [5240:5752:0604/095905.849:ERROR:device_event_log_impl.cc(214)] [09:59:05.849] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.
+6월 04, 2021 11:15:28.11 [7988:6548:0604/111528.011:ERROR:device_event_log_impl.cc(214)] [11:15:28.010] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.
+6월 04, 2021 11:22:53.770 [8000:1612:0604/112253.770:ERROR:device_event_log_impl.cc(214)] [11:22:53.769] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.
+6월 04, 2021 12:39:14.997 [4280:636:0604/123914.997:ERROR:device_event_log_impl.cc(214)] [12:39:14.998] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.
+6월 04, 2021 14:06:13.872 [4200:3668:0604/140613.872:ERROR:device_event_log_impl.cc(214)] [14:06:13.872] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.
+6월 04, 2021 15:03:43.294 [6064:2408:0604/150343.293:ERROR:device_event_log_impl.cc(214)] [15:03:43.293] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.
+6월 04, 2021 16:23:50.314 [3720:4288:0604/162350.314:ERROR:device_event_log_impl.cc(214)] [16:23:50.314] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.
+6월 04, 2021 16:57:57.972 [632:6960:0604/165757.972:ERROR:device_event_log_impl.cc(214)] [16:57:57.973] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.

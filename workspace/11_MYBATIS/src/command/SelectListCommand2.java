@@ -26,7 +26,7 @@ public class SelectListCommand2 implements BoardCommand {
 		int recordPerPage = 5;
 		int beginRecord = (page - 1) * recordPerPage + 1;
 		int endRecord = beginRecord + recordPerPage - 1;
-		if(endRecord > totalRecord) {
+		if (endRecord > totalRecord) {
 			endRecord = totalRecord;
 		}
 		
@@ -34,7 +34,6 @@ public class SelectListCommand2 implements BoardCommand {
 		map.put("beginRecord", beginRecord);
 		map.put("endRecord", endRecord);
 		
-		// DAO의 selectList() 메소드 호출
 		List<BoardDTO> list = BoardDAO.getInstance().selectList(map);
 		
 		String paging = Paging.getPaging("/11_MYBATIS/selectList2.do", totalRecord, recordPerPage, page);
@@ -44,7 +43,8 @@ public class SelectListCommand2 implements BoardCommand {
 		request.setAttribute("paging", paging);
 		request.setAttribute("seq", totalRecord - (page - 1) * recordPerPage);
 		
-		return new ModelAndView("/board/selectList2.jsp", false); // forward
+		return new ModelAndView("board/selectList2.jsp", false);  // 포워드
+		
 	}
 
 }

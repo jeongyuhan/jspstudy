@@ -21,7 +21,7 @@ public class FindListCommand implements BoardCommand {
 		String column = request.getParameter("column");
 		String query = request.getParameter("query");
 		
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("column", column);
 		map.put("query", "%" + query + "%");
 		
@@ -34,14 +34,13 @@ public class FindListCommand implements BoardCommand {
 		int recordPerPage = 5;
 		int beginRecord = (page - 1) * recordPerPage + 1;
 		int endRecord = beginRecord + recordPerPage - 1;
-		if(endRecord > totalRecord) {
+		if (endRecord > totalRecord) {
 			endRecord = totalRecord;
 		}
 		
 		map.put("beginRecord", beginRecord);
 		map.put("endRecord", endRecord);
 		
-		// DAO의 selectList() 메소드 호출
 		List<BoardDTO> list = BoardDAO.getInstance().findList(map);
 		
 		String paging = Paging.getPaging("/11_MYBATIS/findList.do?column=" + column + "&query=" + query, totalRecord, recordPerPage, page);
@@ -51,7 +50,8 @@ public class FindListCommand implements BoardCommand {
 		request.setAttribute("paging", paging);
 		request.setAttribute("seq", totalRecord - (page - 1) * recordPerPage);
 		
-		return new ModelAndView("/board/selectList1.jsp", false); // forward
+		return new ModelAndView("board/selectList1.jsp", false);  // 포워드
+		
 	}
 
 }

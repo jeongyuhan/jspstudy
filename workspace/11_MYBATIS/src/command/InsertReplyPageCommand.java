@@ -9,8 +9,7 @@ public class InsertReplyPageCommand implements BoardCommand {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		return new ModelAndView("board/insertReply.jsp", false); // forward
+		return new ModelAndView("board/insertReply.jsp", false);
 	}
 
 }
