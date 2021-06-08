@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -24,10 +25,10 @@ public class MemberDAO {
 		return instance;
 	}
 	
-	/* 1. 회원 목록 조회 */
-	public List<Member> selectMemberList(){
+	/* 1. 회원 목록 가져오기 */
+	public List<Member> selectMemberList(Map<String, Integer> map) {
 		SqlSession ss = factory.openSession();
-		List<Member> list = ss.selectList("dao.member.selectMemberList");
+		List<Member> list = ss.selectList("dao.member.selectMemberList", map);
 		ss.close();
 		return list;
 	}
