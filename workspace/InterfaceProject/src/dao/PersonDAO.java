@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +80,8 @@ public class PersonDAO {
 		return list;
 	}
 	
-	public int insertPerson(Person person) throws SQLException {
+	// 2. 추가
+	public int insertPerson(Person person) throws SQLIntegrityConstraintViolationException, SQLException {
 		int result = 0;
 		con = getConnection();
 		sql = "INSERT INTO PERSON VALUES (?, ?, ?, ?, SYSDATE)";
@@ -95,9 +97,47 @@ public class PersonDAO {
 		return result;
 	}
 	
+	// 3. 삭제
+	public int deletePerson(String sno) {
+		int result = 0;
+		try {
+			con = getConnection();
+			sql = "DELETE FROM PERSON WHERE SNO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, sno);
+			result = ps.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(con, ps, null);
+		}
+		return result;
+	}
 	
-	
-	
+	// 4. 한명의 정보를 가져오는 메소드를 통해 JUnit으로 테스트하기위한 메소드
+	public Person selectPersonBySno(String sno) {
+		Person person = null;
+		try {
+			con = getConnection();
+			sql = "SELECT SNO, NAME, AGE, BIRTHDAY, REGDATE FROM PERSON WHERE SNO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, sno);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				person = new Person();
+				person.setSno(rs.getString(1));
+				person.setName(rs.getString(2));
+				person.setAge(rs.getInt(3));
+				person.setBirthday(rs.getString(4));
+				person.setRegdate(rs.getDate(5));
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(con, ps, rs);
+		}
+		return person;
+	}
 	
 	
 	
